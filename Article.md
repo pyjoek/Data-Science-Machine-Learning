@@ -42,8 +42,8 @@
     model = LinearRegression()
 
 ### split your dataset to train and test datas
-    x = boston['RM']
-    y = boston['MEDV']
+    X = boston['RM']
+    Y = boston['MEDV']
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.3, random_state = 1)
 
 ### fit your model
@@ -53,11 +53,14 @@
     model.intercept_.round(2), model.coef_.round(2)
 
 ### Test Prediction
+    # Method 1;
         new_RM = np.array([6.5]).reshape(-1, 1)
         model.predict(new_RM)
 
+    # Method 2;
         model.intercept_ + model.coef_*6.5
 
+    # Method 3; --  Used This for Visualizing the graph
         y_test_prediction = model.predict(X_test)
         y_test_prediction.shape
         type(y_test_prediction)
